@@ -1,61 +1,22 @@
 // ==========================================
-// MOBILE NAVIGATION (slide-in sidebar)
+// MOBILE NAVIGATION
 // ==========================================
 
 const navToggle = document.getElementById('nav-toggle');
-const navClose = document.getElementById('nav-close');
 const navLinks = document.getElementById('nav-links');
-const navOverlay = document.getElementById('nav-overlay');
 
-if (navToggle && navLinks && navOverlay) {
-
-    function openNav() {
-        navLinks.classList.add('open');
-        navOverlay.classList.add('open');
-        navToggle.classList.add('open');
-        navToggle.setAttribute('aria-expanded', 'true');
-        navToggle.setAttribute('aria-label', 'Close menu');
-        document.body.style.overflow = 'hidden'; // stop the page scrolling behind the sidebar
-    }
-
-    function closeNav() {
-        navLinks.classList.remove('open');
-        navOverlay.classList.remove('open');
-        navToggle.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'Open menu');
-        document.body.style.overflow = '';
-    }
-
+if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.contains('open');
-        isOpen ? closeNav() : openNav();
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    if (navClose) {
-        navClose.addEventListener('click', closeNav);
-    }
-
-    // Tapping the dimmed backdrop closes the sidebar
-    navOverlay.addEventListener('click', closeNav);
-
-    // Escape key closes it too, for keyboard users
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navLinks.classList.contains('open')) {
-            closeNav();
-        }
-    });
-
-    // Close automatically once a link is tapped
+    // Close the menu automatically once a link is tapped
     navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeNav);
-    });
-
-    // If the window is resized back up to desktop width while open, reset state
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 640 && navLinks.classList.contains('open')) {
-            closeNav();
-        }
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
     });
 }
 
