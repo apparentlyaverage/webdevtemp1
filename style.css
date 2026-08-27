@@ -319,33 +319,6 @@ button:focus-visible {
   background-color: var(--text-color);
 }
 
-@media (max-width: 640px) {
-  .nav-toggle {
-    display: flex;
-  }
-
-  .nav-full ul {
-    display: none;
-    flex-direction: column;
-    gap: 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--accent-color);
-    padding: 0.5rem 5% 1rem;
-  }
-
-  .nav-full ul.open {
-    display: flex;
-  }
-
-  .nav-full ul li {
-    padding: 0.6rem 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-  }
-}
-
 /* =========================================
    10. HERO IMAGE SELECTOR
    ========================================= */
@@ -529,71 +502,52 @@ button:focus-visible {
   transform: translate(0);
 }
 
-/* =========================================
-   15. MOBILE OPTIMIZATION
-   ========================================= */
-@media (max-width: 768px) {
-
-  /* Shorter hero on phones — 85vh forces a lot of scrolling before
-     any real content is visible on a small screen */
-  .hero-selector-container {
-    height: 60vh;
-    height: 60dvh;
+@media (max-width: 640px) {
+  .nav-toggle {
+    display: flex;
+    z-index: 100;
+    position: relative;
   }
 
-  .welcome-section {
-    padding: 2.5rem 6%;
+  /* Morph the hamburger into an X while the sidebar is open */
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-toggle span {
+    transition: all 0.3s ease;
   }
 
-  .about-grid {
-    gap: 2.5rem;
-    margin-top: 1rem;
-    padding: 1.5rem 0;
+  .nav-full ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;  /* fallback */
+    height: 100dvh; /* adapts to mobile browser chrome showing/hiding */
+    background-color: var(--bg-color);
+    padding: 6rem 10% 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99;
   }
 
-  .about-text {
-    padding: 0; /* the 2rem side padding meant for desktop eats too much width on a phone */
+  .nav-full ul.open {
+    transform: translateX(0);
   }
 
-  .rounded-img {
-    height: 220px;
+  .nav-full ul li {
+    padding: 0.6rem 0;
+    border-top: none;
   }
 
-  .menu-section {
-    margin: 3rem auto;
-  }
-
-  .menu-category {
-    margin-bottom: 2.5rem;
-  }
-
-  .directions-section {
-    margin: 3rem auto;
-  }
-
-  .map-frame iframe {
-    height: 280px;
-  }
-
-  .image-controls {
-    gap: 20px; /* a little extra breathing room so the bigger tap targets below don't feel cramped */
-  }
-
-  .selector-dot::after {
-    width: 34px;
-    height: 34px;
-  }
-}
-
-@media (max-width: 380px) {
-  /* On very narrow phones, let long menu item names wrap onto their own
-     line above the price instead of squeezing both onto one row */
-  .menu-trigger {
-    flex-wrap: wrap;
-    row-gap: 0.25rem;
-  }
-
-  .menu-price {
-    margin-left: 0;
+  .nav-full ul a {
+    font-size: 1.2rem;
   }
 }

@@ -6,17 +6,33 @@ const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
 
 if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
+    // 1. Toggle open/close when clicking the hamburger button
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevents click conflicts with the document listener below
+        
+        navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open');
+        
+        const isOpen = navLinks.classList.contains('open');
         navToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // Close the menu automatically once a link is tapped
+    // 2. Close automatically when tapping a link inside the sidebar
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
             navToggle.setAttribute('aria-expanded', 'false');
         });
+    });
+
+    // 3. Close automatically if the user clicks outside the sidebar
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('open') && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
     });
 }
 
