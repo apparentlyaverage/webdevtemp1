@@ -1,0 +1,599 @@
+/* =========================================
+   1. VARIABLES (The Theme)
+   ========================================= */
+:root {
+  --bg-color: #FAEDE3;       /* A creamy, warm oat background */
+  --text-color: #2D231F;     /* A very dark, soft espresso brown for readable text */
+  --primary-color: #C85A32;  /* A burnt terracotta/brick red for buttons (like a fireplace) */
+  --accent-color: #D4A373;   /* The caramel color we used for the list bullets */
+  --font-main: 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  
+}
+
+/* =========================================
+   2. RESET (Clearing Browser Defaults)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth
+}
+
+html, body {
+    overflow-x: hidden; /* the slide-in about animations can otherwise cause a sliver of horizontal scroll on mobile */
+}
+  
+
+/* =========================================
+   3. BASE (Typography & Body)
+   ========================================= */
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.5px;
+    margin-bottom:1rem;
+    line-height: 1.2;
+}
+
+h4{
+    margin-bottom: 2rem;
+    font-size:6rem;
+}
+
+/* =========================================
+   4. LAYOUT (Structure wrappers)
+   ========================================= */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   5. COMPONENTS (Reusable chunks)
+   ========================================= */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius:8px;
+}
+
+/* =========================================
+   6. UTILITIES (Quick helper classes)
+   ========================================= */
+.text-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.mt-1 { margin-top: 1rem; }
+
+/* Keep a visible outline for anyone navigating by keyboard */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   8. HIGH-END MENU (Hover Reveal)
+   ========================================= */
+.menu-section {
+  max-width: 720px;
+  margin: 5rem auto; /* Centers the menu and gives it breathing room */
+  padding: 0 5%;
+}
+
+.menu-section h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.menu-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: #8a7a6d;
+  margin-bottom: 3.5rem;
+}
+
+/* Groups the menu into Drinks / Starters / Main */
+.menu-category {
+  margin-bottom: 3.5rem;
+}
+
+.menu-category:last-child {
+  margin-bottom: 0;
+}
+
+.menu-category-title {
+  text-align: center;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 0;
+}
+
+.menu-category-title::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 1px;
+  background-color: var(--accent-color);
+  margin: 0.85rem auto 0.5rem;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle dividing line */
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+/* The name + price row, revealed on hover, focus, or tap */
+.menu-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background: none;
+  border: none;
+  padding: 1.35rem 0;
+  font-family: var(--font-main);
+  color: var(--text-color);
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover .menu-trigger,
+.menu-item:focus-within .menu-trigger,
+.menu-item.active .menu-trigger {
+  color: var(--primary-color);
+}
+
+.menu-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  letter-spacing: 0.5px;
+}
+
+.menu-price {
+  font-weight: 400;
+  font-size: 0.95rem;
+  opacity: 0.7;
+  white-space: nowrap;
+  margin-left: 1.5rem;
+}
+
+/* The Dropdown Animation Engine */
+.menu-panel {
+  display: grid;
+  grid-template-rows: 0fr; /* Starts crushed to 0 height */
+  transition: grid-template-rows 0.4s ease;
+}
+
+.menu-panel-inner {
+  overflow: hidden; /* Hides the text while it is crushed */
+}
+
+.menu-ingredients {
+  padding-bottom: 1.6rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #6b5d54;
+  font-style: italic; /* Gives it that high-end culinary feel */
+}
+
+/* Reveal ingredients on hover (mouse), focus (keyboard), or tap (touch, via JS .active toggle) */
+.menu-item:hover .menu-panel,
+.menu-item:focus-within .menu-panel,
+.menu-item.active .menu-panel {
+  grid-template-rows: 1fr;
+}
+
+/* =========================================
+   9. DIRECTIONS / MAP
+   ========================================= */
+.directions-section {
+  max-width: 800px;
+  margin: 5rem auto;
+  padding: 0 5%;
+}
+
+.map-frame {
+  border-radius: 12px;
+  overflow: hidden; /* clips the iframe's own edges to the rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* matches .rounded-img elsewhere on the site */
+  margin: 2rem 0;
+  line-height: 0; /* removes the few px of gap an iframe otherwise leaves beneath itself */
+}
+
+.map-frame iframe {
+  display: block;
+}
+
+.directions-actions {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* =========================================
+   7. NAVIGATION (Header)
+   ========================================= */
+
+/* Full width navigation with side padding */
+.nav-full {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;  
+  background-color: var(--accent-color); /* Ties into your warm palette */
+  padding: 1rem 5%;
+  position: relative;
+}
+
+.nav-full ul {
+  display: flex;
+  list-style: none; 
+  gap: 1.5rem;      
+}
+
+.nav-full a {
+  text-decoration: none; 
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.nav-full h2 {
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-bottom: 0; /* the global h2 rule adds a 1rem bottom margin we don't want here */
+}
+
+.nav-logo {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hamburger button — hidden on desktop, shown on small screens below */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--text-color);
+}
+
+@media (max-width: 640px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-full ul {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--accent-color);
+    padding: 0.5rem 5% 1rem;
+  }
+
+  .nav-full ul.open {
+    display: flex;
+  }
+
+  .nav-full ul li {
+    padding: 0.6rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* =========================================
+   10. HERO IMAGE SELECTOR
+   ========================================= */
+.hero-selector-container {
+  position: relative;
+  width: 100%;
+  height: 85vh;  /* fallback for browsers without dvh support */
+  height: 85dvh; /* adapts to mobile browser chrome showing/hiding, avoiding jumpy resizing */
+  overflow: hidden;
+  background-color: var(--text-color); /* Fallback color while image loads */
+}
+
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Adds a smooth crossfade effect when the JS changes the image */
+  transition: opacity 0.3s ease-in-out; 
+}
+
+.welcome-section {
+  padding: 4rem 5%;
+  background-color: var(--bg-color);
+  max-width: 800px;
+  margin: 0 auto; /* Centers the whole block neatly in the middle of the page */
+}
+
+.welcome-section h1 {
+  font-size: clamp(2rem, 5vw + 1rem, 3rem); /* Slightly larger to carry the serif display face well, scales down on small screens */
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.welcome-section p {
+  font-size: clamp(1rem, 2vw + 0.7rem, 1.2rem);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+/* The row of dots at the bottom */
+.image-controls {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 20;
+}
+
+.selector-dot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-color);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Invisible larger hit area so the dot is easy to tap on a phone,
+   without making the visible dot itself bigger */
+.selector-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+}
+
+/* Make the selected dot fill in with your brand color */
+.selector-dot.active, .selector-dot:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+
+/* =========================================
+   12. FOOTER
+   ========================================= */
+.footer {
+  background-color: var(--text-color); 
+  color: var(--bg-color); /* Uses your light oat color for the text */
+  padding: 3rem 0 0 0;
+}
+
+.footer-content {
+  display: grid;
+  /* Using CSS Grid again so the 3 columns auto-collapse on phones! */
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-color); /* Uses your caramel accent for the headings */
+  margin-bottom: 1rem;
+}
+
+.footer-section p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.8; /* Dims the paragraph text slightly so the headings pop */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.2); /* Creates a slightly darker strip at the very bottom */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* =========================================
+   13. ABOUT SECTION
+   ========================================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 5rem; /* Increased from 3rem */
+  align-items: center; 
+  margin-top: 2rem;
+  padding: 2rem 0;
+}
+
+.about-text h2 {
+  color: var(--primary-color); 
+  font-size: clamp(1.8rem, 4vw + 1rem, 2.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.about-text {
+  padding: 0 2rem; /* Adds 2rem of space to the left and right sides */
+}
+
+.rounded-img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  /* Adds a soft, elegant shadow behind the image */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+}
+
+/* =========================================
+   14. ABOUT SECTION ANIMATIONS
+   ========================================= */
+
+/* Elements starting off-screen to the left */
+.slide-from-left {
+  opacity: 0;
+  transform: translateX(-60px); 
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Elements starting off-screen to the right */
+.slide-from-right {
+  opacity: 0;
+  transform: translateX(60px); 
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* The final destination (visible and centered) */
+.show-element {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* =========================================
+   15. MOBILE OPTIMIZATION
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Shorter hero on phones — 85vh forces a lot of scrolling before
+     any real content is visible on a small screen */
+  .hero-selector-container {
+    height: 60vh;
+    height: 60dvh;
+  }
+
+  .welcome-section {
+    padding: 2.5rem 6%;
+  }
+
+  .about-grid {
+    gap: 2.5rem;
+    margin-top: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .about-text {
+    padding: 0; /* the 2rem side padding meant for desktop eats too much width on a phone */
+  }
+
+  .rounded-img {
+    height: 220px;
+  }
+
+  .menu-section {
+    margin: 3rem auto;
+  }
+
+  .menu-category {
+    margin-bottom: 2.5rem;
+  }
+
+  .directions-section {
+    margin: 3rem auto;
+  }
+
+  .map-frame iframe {
+    height: 280px;
+  }
+
+  .image-controls {
+    gap: 20px; /* a little extra breathing room so the bigger tap targets below don't feel cramped */
+  }
+
+  .selector-dot::after {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* On very narrow phones, let long menu item names wrap onto their own
+     line above the price instead of squeezing both onto one row */
+  .menu-trigger {
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+  }
+
+  .menu-price {
+    margin-left: 0;
+  }
+}

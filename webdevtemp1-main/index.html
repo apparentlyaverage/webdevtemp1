@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nic's Nest | Cafe &amp; Kitchen in Makhanda</title>
+    <meta name="description" content="Nic's Nest is a cozy cafe in Makhanda, Eastern Cape, serving breakfast, sourdough, coffee and a full menu of drinks, starters and mains.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--  1. NAVIGATION  -->
+<nav class="nav-full">
+    <a href="#top" class="nav-logo"><h2>Nic's Nest</h2></a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#directions">Directions</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- 2. HERO IMAGE SELECTOR (Images Only) -->
+    <div id="top" class="hero-selector-container">
+
+        <!-- The Main Background Image -->
+        <img id="hero-bg"
+             src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200"
+             srcset="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600 600w,
+                     https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=900 900w,
+                     https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200 1200w,
+                     https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1600 1600w"
+             sizes="100vw"
+             fetchpriority="high"
+             alt="Restaurant Interior" class="hero-bg-img">
+
+        <!-- The Interactive Selectors (Dots) -->
+        <div class="image-controls">
+            <button class="selector-dot active" data-src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200" aria-label="View interior"></button>
+            <button class="selector-dot" data-src="https://images.unsplash.com/photo-1509315811345-672d83ef2fbc?q=80&w=1200" aria-label="View bread"></button>
+            <button class="selector-dot" data-src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=1200" aria-label="View pizza"></button>
+            <button class="selector-dot" data-src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1200" aria-label="View espresso"></button>
+        </div>
+
+    </div>
+
+    <!-- 3. WELCOME & CALL TO ACTION (Moved below the images) -->
+    <section class="welcome-section text-center">
+        <h1>Where Coffee Meets Class</h1>
+        <p>Professional, reliable, and ready to help you today.</p>
+        <a class="btn mt-2" id="quote-btn" href="mailto:hello@nicsnest.co.za?subject=Enquiry%20from%20website">Contact Us</a>
+    </section>
+
+<!-- ABOUT SECTION -->
+    <section id="about" class="container mt-2">
+
+        <!-- ABOUT SECTION PART 1 (Text Left, Image Right) -->
+        <div class="about-grid">
+            <div class="about-text slide-from-left">
+                <h2>Our Story</h2>
+                <p>Located right here in Makhanda, Nic's Nest is more than just a cafe—it is a second home. Set inside a beautifully converted residential house, we offer a cozy retreat complete with original wooden floors and a blazing fireplace for those chilly Eastern Cape mornings.</p>
+                <p>Whether you are stopping by for our famous early bird breakfast, grabbing a fresh sourdough loaf, or settling in with a warm cappuccino, our friendly staff is here to make your day a little bit brighter.</p>
+            </div>
+
+            <div class="about-image slide-from-right">
+                <img src="https://images.unsplash.com/photo-1493857671505-72967e2e2760?q=80&w=1000"
+                     srcset="https://images.unsplash.com/photo-1493857671505-72967e2e2760?q=80&w=500 500w,
+                             https://images.unsplash.com/photo-1493857671505-72967e2e2760?q=80&w=800 800w,
+                             https://images.unsplash.com/photo-1493857671505-72967e2e2760?q=80&w=1000 1000w"
+                     sizes="(min-width: 700px) 50vw, 100vw"
+                     loading="lazy" decoding="async"
+                     alt="Cozy cafe fireplace" class="rounded-img">
+            </div>
+        </div>
+
+        <!-- ABOUT SECTION PART 2 (Image Left, Text Right) -->
+        <div class="about-grid">
+            <div class="about-image slide-from-left">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000"
+                     srcset="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500 500w,
+                             https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800 800w,
+                             https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000 1000w"
+                     sizes="(min-width: 700px) 50vw, 100vw"
+                     loading="lazy" decoding="async"
+                     alt="Barista pouring coffee" class="rounded-img">
+            </div>
+
+            <div class="about-text slide-from-right">
+                <h2>Our Community</h2>
+                <p>We pride ourselves on being a true gathering place. From long-time locals catching up over a morning brew to Rhodes University students powering through study sessions between lectures, our doors are open to everyone.</p>
+                <p>Our commitment to quality means we pour care into every cup and every fresh loaf of sourdough. We believe great food and great company go hand-in-hand. Come pull up a chair.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 3. MENU SECTION -->
+    <section id="menu" class="menu-section">
+        <h2 class="text-center">Our Menu</h2>
+        <p class="menu-subtitle text-center">Hover or tap an item to see what's in it</p>
+
+        <!-- DRINKS -->
+        <div class="menu-category">
+            <h3 class="menu-category-title">Drinks</h3>
+            <div class="menu-list">
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Long Island Iced Tea</span>
+                        <span class="menu-price">R95</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">Vodka, gin, white rum, tequila &amp; triple sec, fresh lemon, a whisper of cola.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Piña Colada</span>
+                        <span class="menu-price">R85</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">White rum, coconut cream, pineapple juice, crushed ice.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Negroni</span>
+                        <span class="menu-price">R90</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">Gin, Campari, sweet vermouth, orange peel.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- STARTERS -->
+        <div class="menu-category">
+            <h3 class="menu-category-title">Starters</h3>
+            <div class="menu-list">
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Jalapeño Poppers</span>
+                        <span class="menu-price">R65</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">Fresh jalapeños, cream cheese, cheddar, crisp breadcrumb crust, sweet chilli dip.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Fried Calamari</span>
+                        <span class="menu-price">R85</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">Tender calamari rings, seasoned flour, lemon, garlic aioli.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Loaded Chips</span>
+                        <span class="menu-price">R55</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">Hand-cut potatoes, rock salt, rosemary, garlic aioli.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="menu-category">
+            <h3 class="menu-category-title">Main</h3>
+            <div class="menu-list">
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Wild Mushroom Fettuccine</span>
+                        <span class="menu-price">R120</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">Fettuccine, wild mushrooms, cream, parmesan, roasted garlic.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Grilled Sirloin Steak</span>
+                        <span class="menu-price">R185</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">300g grain-fed sirloin, chimichurri, roasted potatoes, seasonal greens.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <button class="menu-trigger" aria-expanded="false">
+                        <span class="menu-name">Ribs &amp; Wings Platter</span>
+                        <span class="menu-price">R165</span>
+                    </button>
+                    <div class="menu-panel">
+                        <div class="menu-panel-inner">
+                            <p class="menu-ingredients">Slow-cooked pork ribs, chicken wings, smoky BBQ glaze, coleslaw, fries.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DIRECTIONS / MAP -->
+    <section id="directions" class="directions-section">
+        <h2 class="text-center">Find Us</h2>
+        <p class="menu-subtitle text-center">65 African Street, Makhanda, Eastern Cape</p>
+
+        <div class="map-frame">
+            <iframe
+                src="https://www.google.com/maps?q=65+African+Street,+Makhanda,+Eastern+Cape,+South+Africa&output=embed"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Map showing the location of Nic's Nest at 65 African Street, Makhanda">
+            </iframe>
+        </div>
+
+        <div class="directions-actions">
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=65+African+Street,+Makhanda,+Eastern+Cape,+South+Africa" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+    </section>
+
+<!-- 5. FOOTER -->
+    <footer id="contact" class="footer mt-2">
+        <div class="footer-content container">
+
+            <div class="footer-section">
+                <h3>Nic's Nest</h3>
+                <p>Where Coffee Meets Class.</p>
+                <p>Warm fires, great coffee, and fresh sourdough.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Visit Us</h3>
+                <p>65 African Street</p>
+                <p>Makhanda, Eastern Cape</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Mon - Fri: 7:00 AM - 6:00 PM</p>
+                <p>Sat - Sun: 7:00 AM - 3:00 PM</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nic's Nest. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
