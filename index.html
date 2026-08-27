@@ -16,17 +16,21 @@
 <!--  1. NAVIGATION  -->
 <nav class="nav-full">
     <a href="#top" class="nav-logo"><h2>Nic's Nest</h2></a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
         <span></span>
         <span></span>
     </button>
     <ul id="nav-links">
+        <li class="nav-close-item">
+            <button class="nav-close" id="nav-close" aria-label="Close menu">&times;</button>
+        </li>
         <li><a href="#about">About</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#directions">Directions</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="nav-overlay" id="nav-overlay"></div>
 </nav>
 
 <!-- 2. HERO IMAGE SELECTOR (Images Only) -->
@@ -56,8 +60,8 @@
     <!-- 3. WELCOME & CALL TO ACTION (Moved below the images) -->
     <section class="welcome-section text-center">
         <h1>Where Coffee Meets Class</h1>
-        <p>Professional, reliable, and ready to help you today.</p>
-        <a class="btn mt-2" id="quote-btn" href="tel:+27410100435">Contact Us</a>
+        <p>Warm fires, great coffee, and fresh sourdough.</p>
+        <a class="btn mt-2" id="quote-btn" href="mailto:hello@nicsnest.co.za?subject=Enquiry%20from%20website">Contact Us</a>
     </section>
 
 <!-- ABOUT SECTION -->
@@ -284,12 +288,6 @@
                 <h3>Hours</h3>
                 <p>Mon - Fri: 7:00 AM - 6:00 PM</p>
                 <p>Sat - Sun: 7:00 AM - 3:00 PM</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>041 010 0435</p>
-                <p>admin@nicsnest.co.za</p>
             </div>
 
         </div>
